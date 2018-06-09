@@ -17,7 +17,6 @@ func ExampleCard_String() {
 	fmt.Println(Card{Spade, Jack})
 	fmt.Println(Card{Club, Queen})
 	fmt.Println(Card{Heart, King})
-
 	// Output:
 	// 🃏
 	// Ace of Hearts
