@@ -39,3 +39,18 @@ func TestSort(t *testing.T) {
 		}
 	}
 }
+
+func TestJokers(t *testing.T) {
+	deck := New(Jokers(5))
+	count := 0
+
+	for _, c := range deck {
+		if c.Suit == Joker {
+			count++
+		}
+	}
+
+	if count != 5 {
+		t.Errorf("Expect %d Jokers, got %s", 5, count)
+	}
+}
