@@ -1,6 +1,10 @@
 package deck
 
-import "sort"
+import (
+	"math/rand"
+	"sort"
+	"time"
+)
 
 type Deck []Card
 
@@ -30,6 +34,16 @@ func Sort(less func(cards []Card) func(i, j int) bool) func([]Card) []Card {
 func DefaultSort(cards []Card) []Card {
 	sort.Slice(cards, Less(cards))
 	return cards
+}
+
+// Shuffle the cards using Fisher–Yates algorithm.
+func Shuffle(cards []Card) []Card {
+	r := rand.New(rand.NewSource(time.Now().Unix()))
+
+	for i := len(cards) - 1; i > 0; i-- {
+		j := r.Intn(i + 1)
+		cards[i], cards[j] = cards[j], cards[i]
+	}
 }
 
 func Less(cards []Card) func(i, j int) bool {
