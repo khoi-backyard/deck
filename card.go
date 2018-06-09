@@ -50,3 +50,7 @@ func (c Card) String() string {
 	}
 	return fmt.Sprintf("%s of %ss", c.Rank, c.Suit)
 }
+
+func absRank(c Card) int {
+	return int(c.Suit) * int(maxRank) + int(c.Rank)
+}
