@@ -57,6 +57,18 @@ func Jokers(n int) func([]Card) []Card {
 	}
 }
 
+func Filter(f func(Card) bool) func([]Card) []Card {
+	return func(cards []Card) []Card {
+		var res []Card
+		for _, c := range cards {
+			if f(c) {
+				res = append(res, c)
+			}
+		}
+		return res
+	}
+}
+
 func Less(cards []Card) func(i, j int) bool {
 	return func(i, j int) bool {
 		return absRank(cards[i]) < absRank(cards[j])

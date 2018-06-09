@@ -54,3 +54,15 @@ func TestJokers(t *testing.T) {
 		t.Errorf("Expect %d Jokers, got %s", 5, count)
 	}
 }
+
+func TestFilter(t *testing.T) {
+	deck := New(Filter(func(c Card) bool {
+		return c.Rank < Jack
+	}))
+
+	for _, c := range deck {
+		if c.Rank >= Jack {
+			t.Errorf("%s is larger than Jack", c)
+		}
+	}
+}
