@@ -13,6 +13,8 @@ const (
 	Joker
 )
 
+var suits = [...]Suit{Spade, Diamond, Club, Heart}
+
 type Rank uint8
 
 const (
@@ -32,6 +34,11 @@ const (
 	King
 )
 
+const (
+	minRank = Ace
+	maxRank = King
+)
+
 type Card struct {
 	Suit
 	Rank
@@ -43,6 +50,3 @@ func (c Card) String() string {
 	}
 	return fmt.Sprintf("%s of %ss", c.Rank, c.Suit)
 }
-
-
-
