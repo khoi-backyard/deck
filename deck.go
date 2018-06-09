@@ -44,6 +44,8 @@ func Shuffle(cards []Card) []Card {
 		j := r.Intn(i + 1)
 		cards[i], cards[j] = cards[j], cards[i]
 	}
+
+	return cards
 }
 
 func Less(cards []Card) func(i, j int) bool {
